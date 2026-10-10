@@ -1,0 +1,86 @@
+(ExpressProject "bun"
+  (ProjectVersion "19981106")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library")
+    (NoModify)
+    (File ".\bun.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (PSPICE_Regenerate_Netlist_Flag "FALSE"))
+  (Folder "Outputs"
+    (File ".\bun-pspicefiles\schematic1\schematic1.net"
+      (Type "Report")))
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles"
+      (File.PSpice.{09528990-3187-11D2-BC7B-00A0C90CBF91}
+         ".\bun-pspicefiles\schematic1\sim1.sim"
+        (DisplayName "SCHEMATIC1-sim1")
+        (Type "PSpice Profile"))
+      (File.PSpice.{09528990-3187-11D2-BC7B-00A0C90CBF91}
+         ".\bun-pspicefiles\schematic1\paramsim.sim"
+        (DisplayName "SCHEMATIC1-paramsim")
+        (Type "PSpice Profile"))
+      (File.PSpice.{09528990-3187-11D2-BC7B-00A0C90CBF91}
+         ".\bun-pspicefiles\schematic1\montecarlo.sim"
+        (DisplayName "SCHEMATIC1-montecarlo")
+        (Type "PSpice Profile"))
+      (File.PSpice.{09528990-3187-11D2-BC7B-00A0C90CBF91}
+         ".\bun-pspicefiles\schematic1\perform.sim"
+        (DisplayName "SCHEMATIC1-perform")
+        (Type "PSpice Profile"))
+      (ActiveProfile ".\bun-pspicefiles\schematic1\paramsim.sim"))
+    (Folder "Model Libraries"
+      (Sort User))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (PartMRUSelector
+    (TL082
+      (FullPartName "TL082.Normal")
+      (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\OPAMP.OLB")
+      (DeviceIndex "0"))
+    (zener
+      (FullPartName "zener.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\TCLSCRIPTS\CAPPSPICEMODELAPP\ZENER\HYBRID\SUPPORTFILES\ZENER.OLB")
+      (DeviceIndex "0"))
+    (1n6280/ON
+      (FullPartName "1n6280/ON.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\ON_DIODE.OLB")
+      (DeviceIndex "0"))
+    (1_5smc12at3/ON
+      (FullPartName "1_5smc12at3/ON.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\ON_DIODE.OLB")
+      (DeviceIndex "0"))
+    (BZT55B7V5
+      (FullPartName "BZT55B7V5.Normal")
+      (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\BZT55.OLB")
+      (DeviceIndex "0")))
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Outputs")
+      (Select "Design Resources"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -8 -31 0 200 0 282"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 2 3 -1 -1 -8 -31 104 1434 104 425")
+        (Scroll "-151 34")
+        (Zoom "116")
+        (Occurrence "/"))
+      (Path "D:\UTCN\TEME\AN II\CAD\PROJECT\BUN.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "PAGE1")))
+  (MPSSessionName "Raul"))

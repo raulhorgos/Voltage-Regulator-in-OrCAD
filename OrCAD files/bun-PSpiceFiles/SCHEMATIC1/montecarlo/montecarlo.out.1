@@ -1,0 +1,285 @@
+
+**** 05/20/23 16:52:15 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-montecarlo"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\montecarlo.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "montecarlo.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 1s 0 SKIPBP 
+.WCASE TRAN V([OUT]) YMAX VARY BOTH  HI 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source BUN
+V_Vin         N155530 0  
++SIN 0 155 60Hz 0 0 0
+C_C         N155638 0 C_C 10m IC=0 
+.model        C_C CAP C=1 DEV=20%
+R_Rl         0 OUT  {r}  
+D_D3         0 N156469 D1N4002 
+R_R1         0 N156010 R_R1 5k  
+.model        R_R1 RES R=1 DEV=5%
+R_R2         N155848 N155638 R_R2 1k  
+.model        R_R2 RES R=1 DEV=5%
+Q_Q2         N155638 N157157 N158247 Q2N3055
+D_D2         N156469 N155638 D1N4002 
+X_POT    N156010 N155848 N155974 SCHEMATIC1_POT 
+D_D1         N156465 N155638 D1N4002 
+R_Rp         N156184 OUT R_Rp 0.25  
+.model        R_Rp RES R=1 DEV=5%
+Q_Qp         N157157 N156184 OUT Q2N2222
+R_R3         N155530 N155540  1m  
+D_D4         0 N156465 D1N4002 
+X_TX    N155540 0 N156465 N156469 SCHEMATIC1_TX 
+X_D9         0 N155848 Zener PARAMS: VZT=14 TCBV=1.7 
+X_U2A         N155974 OUT N155638 0 N157157 TL082
+Q_Q3         N155638 N158247 N156184 Q2N3055
+.PARAM  r=1k set=0
+
+.subckt SCHEMATIC1_POT 1 2 t  
+RT_POT         1 t {(5k*(1-{set}))+.001}
+RB_POT         t 2 {(5k*{set})+.001}
+.ends SCHEMATIC1_POT
+
+.subckt SCHEMATIC1_TX 1 2 3 4  
+K_TX         L1_TX L2_TX 1
+L1_TX         1 2 10mH
+L2_TX         3 4 134uH
+.ends SCHEMATIC1_TX
+
+**** RESUMING montecarlo.cir ****
+.END
+
+**** 05/20/23 16:52:15 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-montecarlo"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\montecarlo.sim ] 
+
+
+ ****     Diode MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               D1N4002         X_U2A.dx        X_U2A.dy        
+          IS   14.110000E-09  800.000000E-18  800.000000E-18 
+           N    1.984                                        
+         ISR  100.000000E-12                                 
+         IKF   94.81                                         
+          BV  100.1                                          
+         IBV   10                                            
+          RS     .03389                         1.000000E-03 
+          TT    4.761000E-06                                 
+         CJO   51.170000E-12                   10.000000E-12 
+          VJ     .3905                                       
+           M     .2762                                       
+
+
+**** 05/20/23 16:52:15 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-montecarlo"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\montecarlo.sim ] 
+
+
+ ****     BJT MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               Q2N3055         Q2N2222         
+               NPN             NPN             
+       LEVEL    1               1            
+          IS  974.400000E-15   14.340000E-15 
+          BF   99.49          255.9          
+          NF    1               1            
+         VAF   50              74.03         
+         IKF    4.029            .2847       
+         ISE  902.500000E-12   14.340000E-15 
+          NE    1.941           1.307        
+          BR    2.949           6.092        
+          NR    1               1            
+         ISS    0               0            
+          RB     .1            10            
+          RE    0               0            
+          RC     .1             1            
+         CJE  569.100000E-12   22.010000E-12 
+         VJE     .75             .75         
+         MJE     .3333           .377        
+         CJC  276.000000E-12    7.306000E-12 
+         VJC     .75             .75         
+         MJC     .3333           .3416       
+        XCJC    1               1            
+         CJS    0               0            
+         VJS     .75             .75         
+          TF   39.110000E-09  411.100000E-12 
+         XTF    2               3            
+         VTF   10               1.7          
+         ITF   20                .6          
+          TR  971.700000E-09   46.910000E-09 
+         XTB    1.5             1.5          
+          KF    0               0            
+          AF    1               1            
+          CN    2.42            2.42         
+           D     .87             .87         
+
+
+**** 05/20/23 16:52:15 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-montecarlo"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\montecarlo.sim ] 
+
+
+ ****     Junction FET MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U2A.jx1       X_U2A.jx2       
+               NJF             NJF             
+         VTO   -1              -1            
+        BETA  222.070000E-06  222.070000E-06 
+          IS  100.000000E-12  100.000000E-12 
+
+
+**** 05/20/23 16:52:15 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-montecarlo"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\montecarlo.sim ] 
+
+
+ ****     Resistor MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               R_R1            R_R2            R_Rp            
+           R    1               1               1            
+
+
+**** 05/20/23 16:52:15 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-montecarlo"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\montecarlo.sim ] 
+
+
+ ****     Capacitor MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               C_C             
+           C    1            
+
+
+
+Mean Deviation =    -.0634
+Sigma          =     .1182
+
+ RUN                    MAX DEVIATION FROM NOMINAL
+
+C_C C_C C                .2126  (1.80 sigma)  lower  at T =    5.4956E-03
+                        ( -17.538% change per 1% change in Model Parameter)
+
+R_R1 R_R1 R              .117   ( .99 sigma)  higher  at T =     .0371
+                        (   8.7971% change per 1% change in Model Parameter)
+
+R_RP R_RP R              .0967  ( .82 sigma)  lower  at T =     .1144
+                        (  -7.0565% change per 1% change in Model Parameter)
+
+R_R2 R_R2 R              .0612  ( .52 sigma)  lower  at T =     .098 
+                        (  -4.4778% change per 1% change in Model Parameter)
+
+
+**** 05/20/23 16:52:15 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-montecarlo"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\montecarlo.sim ] 
+
+
+ ****     UPDATED MODEL PARAMETERS         TEMPERATURE =   27.000 DEG C
+
+                      WORST CASE ALL DEVICES
+
+******************************************************************************
+
+
+
+Device       MODEL        PARAMETER    NEW VALUE    
+C_C          C_C          C                .8           (Decreased)  
+R_R1         R_R1         R               1.05          (Increased)  
+R_R2         R_R2         R                .95          (Decreased)  
+R_Rp         R_Rp         R                .95          (Decreased)  
+    
+
+**** 05/20/23 16:52:15 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-montecarlo"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\montecarlo.sim ] 
+
+
+ ****     SORTED DEVIATIONS OF V(OUT)      TEMPERATURE =   27.000 DEG C
+
+                      WORST CASE SUMMARY
+
+******************************************************************************
+
+
+
+
+
+Mean Deviation =     .6798
+Sigma          =    0     
+
+ RUN                    MAX DEVIATION FROM NOMINAL
+
+WORST CASE ALL DEVICES
+                         .6798  higher  at T =    3.3783E-03
+                        ( 107.24% of Nominal)
+
+
+
+          JOB CONCLUDED
+
+**** 05/20/23 16:52:15 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-montecarlo"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\montecarlo.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =         .88
+

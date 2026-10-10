@@ -1,0 +1,70 @@
+
+**** 05/18/23 15:12:09 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-sim1"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\sim1.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "sim1.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 1s 0 SKIPBP 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source BUN
+V_Vin         N155530 0  
++SIN 0 155 60Hz 0 0 0
+X_U1A         N155974 N156102 N155638 0 N157157 LM358
+C_C         N155638 0  10m  
+R_Rs         N156102 0  {r}  
+Q_Q1         N155638 N157311 N156184 Q2N3055
+D_D3         0 N156469 D1N4002 
+R_R1         0 N156010  5k  
+R_R2         N155848 N155638  2.2k  
+Q_Q2         N155638 N157157 N157311 Q2N3055
+D_D2         N156469 N155638 D1N4002 
+X_POT    N156010 N155848 N155974 SCHEMATIC1_POT 
+D_D5         0 N155848 D02CZ15 
+D_D1         N156465 N155638 D1N4002 
+R_Rp         N156184 N156102  0,2  
+------------------------------$
+ERROR(ORPSIM-16144): Value may not be 0
+Q_Qp         N157157 N156184 N156102 Q2N2222
+R_R3         N155530 N155540  1m  
+D_D4         0 N156465 D1N4002 
+X_TX    N155540 0 N156465 N156469 SCHEMATIC1_TX 
+.PARAM  r=20 set=0.5
+
+.subckt SCHEMATIC1_POT 1 2 t  
+RT_POT         1 t {(5k*(1-{set}))+.001}
+RB_POT         t 2 {(5k*{set})+.001}
+.ends SCHEMATIC1_POT
+
+.subckt SCHEMATIC1_TX 1 2 3 4  
+K_TX         L1_TX L2_TX 1
+L1_TX         1 2 10mH
+L2_TX         3 4 134uH
+.ends SCHEMATIC1_TX
+
+**** RESUMING sim1.cir ****
+.END
+

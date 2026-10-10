@@ -1,0 +1,432 @@
+
+**** 05/20/23 16:36:37 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "paramsim.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 100m  0 
+.STEP LIN PARAM set 0 1 0.1 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source BUN
+V_Vin         N155530 0  
++SIN 0 155 60Hz 0 0 0
+C_C         N155638 0  25m IC=0 
+R_Rl         0 OUT  {r}  
+D_D3         0 N156469 D1N4002 
+R_R1         0 N156010  5k  
+R_R2         N155848 N155638  1k  
+Q_Q2         N155638 N157157 N158247 Q2N3055
+D_D2         N156469 N155638 D1N4002 
+X_POT    N156010 N155848 N155974 SCHEMATIC1_POT 
+D_D1         N156465 N155638 D1N4002 
+R_Rp         N156184 OUT  0.25  
+Q_Qp         N157157 N156184 OUT Q2N2222
+R_R3         N155530 N155540  1m  
+D_D4         0 N156465 D1N4002 
+X_TX    N155540 0 N156465 N156469 SCHEMATIC1_TX 
+X_D9         0 N155848 Zener PARAMS: VZT=14 TCBV=1.7 
+X_U2A         N155974 OUT N155638 0 N157157 TL082
+Q_Q3         N155638 N158247 N156184 Q2N3055
+.PARAM  r=1k set=0
+
+.subckt SCHEMATIC1_POT 1 2 t  
+RT_POT         1 t {(5k*(1-{set}))+.001}
+RB_POT         t 2 {(5k*{set})+.001}
+.ends SCHEMATIC1_POT
+
+.subckt SCHEMATIC1_TX 1 2 3 4  
+K_TX         L1_TX L2_TX 1
+L1_TX         1 2 10mH
+L2_TX         3 4 134uH
+.ends SCHEMATIC1_TX
+
+**** RESUMING paramsim.cir ****
+.END
+
+**** 05/20/23 16:36:37 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     Diode MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               D1N4002         X_U2A.dx        X_U2A.dy        
+          IS   14.110000E-09  800.000000E-18  800.000000E-18 
+           N    1.984                                        
+         ISR  100.000000E-12                                 
+         IKF   94.81                                         
+          BV  100.1                                          
+         IBV   10                                            
+          RS     .03389                         1.000000E-03 
+          TT    4.761000E-06                                 
+         CJO   51.170000E-12                   10.000000E-12 
+          VJ     .3905                                       
+           M     .2762                                       
+
+
+**** 05/20/23 16:36:37 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     BJT MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               Q2N3055         Q2N2222         
+               NPN             NPN             
+       LEVEL    1               1            
+          IS  974.400000E-15   14.340000E-15 
+          BF   99.49          255.9          
+          NF    1               1            
+         VAF   50              74.03         
+         IKF    4.029            .2847       
+         ISE  902.500000E-12   14.340000E-15 
+          NE    1.941           1.307        
+          BR    2.949           6.092        
+          NR    1               1            
+         ISS    0               0            
+          RB     .1            10            
+          RE    0               0            
+          RC     .1             1            
+         CJE  569.100000E-12   22.010000E-12 
+         VJE     .75             .75         
+         MJE     .3333           .377        
+         CJC  276.000000E-12    7.306000E-12 
+         VJC     .75             .75         
+         MJC     .3333           .3416       
+        XCJC    1               1            
+         CJS    0               0            
+         VJS     .75             .75         
+          TF   39.110000E-09  411.100000E-12 
+         XTF    2               3            
+         VTF   10               1.7          
+         ITF   20                .6          
+          TR  971.700000E-09   46.910000E-09 
+         XTB    1.5             1.5          
+          KF    0               0            
+          AF    1               1            
+          CN    2.42            2.42         
+           D     .87             .87         
+
+
+**** 05/20/23 16:36:37 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     Junction FET MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U2A.jx1       X_U2A.jx2       
+               NJF             NJF             
+         VTO   -1              -1            
+        BETA  222.070000E-06  222.070000E-06 
+          IS  100.000000E-12  100.000000E-12 
+
+
+**** 05/20/23 16:36:37 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM SET =    0     
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  OUT) 752.6E-06  (N155530)    0.0000                   (N155540)    0.0000    
+
+(N155638)    1.2502                   (N155848)    1.0736                       
+
+(N155974)    1.0736                   (N156010)     .5368                       
+
+(N156184) 752.8E-06                   (N156465)     .6253                       
+
+(N156469)     .6253                   (N157157)     .6251                       
+
+(N158247)     .3201                   (X_U2A.6)   -5.7369                       
+
+(X_U2A.7)    2.6574                   (X_U2A.8)    2.6574                       
+
+(X_U2A.9)    0.0000                   (X_U2A.10)     .7259                      
+
+(X_U2A.11)    1.1613                  (X_U2A.12)     .8569                      
+
+(X_U2A.53)   -1.0656                  (X_U2A.54)    2.3158                      
+
+(X_U2A.90)   40.6460                  (X_U2A.91)   40.0000                      
+
+(X_U2A.92)  -40.0000                  (X_U2A.99)     .6251                      
+
+(X_D9.XinstMyZenerModel.1)  -12.4300  (X_D9.XinstMyZenerModel.3)   13.5030      
+
+(X_D9.XinstMyZenerModel.9)-127.1E-15  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_Vin        0.000E+00
+    X_U2A.vb    -5.737E-05
+    X_U2A.vc    -6.251E+02
+    X_U2A.ve    -6.251E+02
+    X_U2A.vlim   4.065E-02
+    X_U2A.vlp    5.700E-05
+    X_U2A.vln   -8.065E-11
+
+    TOTAL POWER DISSIPATION   2.90E+03  WATTS
+
+
+**** 05/20/23 16:36:37 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM SET =     .1   
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  OUT) 752.6E-06  (N155530)    0.0000                   (N155540)    0.0000    
+
+(N155638)    1.2502                   (N155848)    1.0902                       
+
+(N155974)    1.0102                   (N156010)     .5317                       
+
+(N156184) 752.8E-06                   (N156465)     .6253                       
+
+(N156469)     .6253                   (N157157)     .6251                       
+
+(N158247)     .3201                   (X_U2A.6)   -5.7599                       
+
+(X_U2A.7)    2.6575                   (X_U2A.8)    2.6575                       
+
+(X_U2A.9)    0.0000                   (X_U2A.10)     .6691                      
+
+(X_U2A.11)    1.1206                  (X_U2A.12)     .8151                      
+
+(X_U2A.53)   -1.0656                  (X_U2A.54)    2.3158                      
+
+(X_U2A.90)   40.6460                  (X_U2A.91)   40.0000                      
+
+(X_U2A.92)  -40.0000                  (X_U2A.99)     .6251                      
+
+(X_D9.XinstMyZenerModel.1)  -12.4130  (X_D9.XinstMyZenerModel.3)   13.5030      
+
+(X_D9.XinstMyZenerModel.9)-126.9E-15  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_Vin        0.000E+00
+    X_U2A.vb    -5.760E-05
+    X_U2A.vc    -6.251E+02
+    X_U2A.ve    -6.251E+02
+    X_U2A.vlim   4.065E-02
+    X_U2A.vlp    5.723E-05
+    X_U2A.vln   -8.065E-11
+
+    TOTAL POWER DISSIPATION   2.90E+03  WATTS
+
+
+**** 05/20/23 16:36:37 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM SET =     .2   
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  OUT) 752.6E-06  (N155530)    0.0000                   (N155540)    0.0000    
+
+(N155638)    1.2502                   (N155848)    1.1036                       
+
+(N155974)     .9571                   (N156010)     .5317                       
+
+(N156184) 752.8E-06                   (N156465)     .6252                       
+
+(N156469)     .6252                   (N157157)     .6251                       
+
+(N158247)     .3201                   (X_U2A.6)   -5.6643                       
+
+(X_U2A.7)    2.6574                   (X_U2A.8)    2.6574                       
+
+(X_U2A.9)    0.0000                   (X_U2A.10)     .6235                      
+
+(X_U2A.11)    1.0825                  (X_U2A.12)     .7820                      
+
+(X_U2A.53)   -1.0656                  (X_U2A.54)    2.3158                      
+
+(X_U2A.90)   40.6460                  (X_U2A.91)   40.0000                      
+
+(X_U2A.92)  -40.0000                  (X_U2A.99)     .6251                      
+
+(X_D9.XinstMyZenerModel.1)  -12.4000  (X_D9.XinstMyZenerModel.3)   13.5030      
+
+(X_D9.XinstMyZenerModel.9)-126.8E-15  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_Vin        0.000E+00
+    X_U2A.vb    -5.664E-05
+    X_U2A.vc    -6.251E+02
+    X_U2A.ve    -6.251E+02
+    X_U2A.vlim   4.065E-02
+    X_U2A.vlp    5.627E-05
+    X_U2A.vln   -8.065E-11
+
+    TOTAL POWER DISSIPATION   2.90E+03  WATTS
+
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+
+ERROR(ORPSIM-15138): Convergence problem in Transient Analysis at Time =  .038.
+         Time step =  167.5E-21, minimum allowable step size =  1.000E-18
+
+  These voltages failed to converge:
+
+    V(OUT)                    =     12.08V  \     12.54V
+    V(N156469)                =  -164.84mV  \  -660.57mV
+    V(N157157)                =     12.44V  \     13.65V
+    V(N158247)                =     12.65V  \     13.15V
+    V(N156465)                =     15.84V  \     16.33V
+    V(N156184)                =     12.26V  \     12.55V
+    V(X_U2A.6)                =   819.20KV  \    47.35mV
+    V(X_U2A.7)                =   819.21KV  \     13.69V
+    V(X_U2A.10)               =     12.69V  \     12.94V
+    V(X_U2A.53)               =    -5.456V  \     13.36V
+    V(X_U2A.90)               =    16.38MV  \   976.56mV
+    V(X_U2A.8)                =   819.21KV  \     13.69V
+
+  These supply currents failed to converge:
+
+    I(X_U2A.egnd)             =   -36.64KA  \  -181.81mA
+    I(X_TX.L1_TX)             =     48.51A  \     51.90A
+    I(X_TX.L2_TX)             =     29.25A  \   -4.533mA
+    I(V_Vin)                  =    -48.51A  \    -51.90A
+    I(X_U2A.vb)               =  -678.71mA  \    7.451nA
+    I(X_U2A.vc)               =   -17.60KA  \   244.14uA
+    I(X_U2A.ve)               =    11.14KA  \  -488.28uA
+    I(X_U2A.vlim)             =    16.38KA  \   976.56uA
+    I(X_U2A.vlp)              =   -15.26uA  \   -39.11pA
+    I(X_U2A.vln)              =    -9.63uA  \   -40.42pA
+    I(X_U2A.hlim)             =   -32.77uA  \   -1.953pA
+
+  These devices failed to converge:
+    X_U2A.dlp X_D9.XinstMyZenerModel.DF1 X_U2A.fb  X_U2A.j1  X_U2A.j2  
+
+ERROR(ORPSIM-15659): Discontinuing simulation due to convergence problem
+
+
+
+  Last node voltages tried were:
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  OUT)   12.0760  (N155530)  146.8400                   (N155540)  146.7900    
+
+(N155638)   15.6700                   (N155848)   13.9370                       
+
+(N155974)   12.5430                   (N156010)    6.9684                       
+
+(N156184)   12.2600                   (N156465)   15.8350                       
+
+(N156469)    -.1648                   (N157157)   12.4360                       
+
+(N158247)   12.6480                   (X_U2A.6) 819.2E+03                       
+
+(X_U2A.7) 819.2E+03                   (X_U2A.8) 819.2E+03                       
+
+(X_U2A.9)    0.0000                   (X_U2A.10)   12.6910                      
+
+(X_U2A.11)   15.2360                  (X_U2A.12)   15.2350                      
+
+(X_U2A.53)   -5.4561                  (X_U2A.54)    2.3158                      
+
+(X_U2A.90) 16.38E+06                  (X_U2A.91)   40.0000                      
+
+(X_U2A.92)  -40.0000                  (X_U2A.99)    7.8352                      
+
+(X_D9.XinstMyZenerModel.1)     .4335  (X_D9.XinstMyZenerModel.3)   13.5030      
+
+(X_D9.XinstMyZenerModel.9) 3.461E-06  
+
+
+**** Interrupt ****

@@ -1,0 +1,909 @@
+
+**** 05/25/23 09:49:51 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "paramsim.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 1s 0 
+.STEP LIN PARAM set 0 1 0.1 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source BUN
+V_Vin         N155530 0  
++SIN 0 155 60Hz 0 0 0
+C_C         N155638 0 C_C 10m IC=0 
+.model        C_C CAP C=1 DEV=20%
+R_Rl         0 OUT  {r}  
+D_D3         0 N156469 D1N4002 
+R_R1         0 N156010 R_R1 5k  
+.model        R_R1 RES R=1 DEV=5%
+R_R2         N155848 N155638 R_R2 1k  
+.model        R_R2 RES R=1 DEV=5%
+Q_Q2         N155638 N157157 N158247 Q2N3055
+D_D2         N156469 N155638 D1N4002 
+X_POT    N156010 N155848 N155974 SCHEMATIC1_POT 
+D_D1         N156465 N155638 D1N4002 
+R_Rp         N156184 OUT R_Rp 0.25  
+.model        R_Rp RES R=1 DEV=5%
+Q_Qp         N157157 N156184 OUT Q2N2222
+R_R3         N155530 N155540  1m  
+D_D4         0 N156465 D1N4002 
+X_TX    N155540 0 N156465 N156469 SCHEMATIC1_TX 
+X_D9         0 N155848 Zener PARAMS: VZT=14 TCBV=1.7 
+X_U2A         N155974 OUT N155638 0 N157157 TL082
+Q_Q3         N155638 N158247 N156184 Q2N3055
+.PARAM  r=0.1 set=0
+
+.subckt SCHEMATIC1_POT 1 2 t  
+RT_POT         1 t {(5k*(1-{set}))+.001}
+RB_POT         t 2 {(5k*{set})+.001}
+.ends SCHEMATIC1_POT
+
+.subckt SCHEMATIC1_TX 1 2 3 4  
+K_TX         L1_TX L2_TX 1
+L1_TX         1 2 10mH
+L2_TX         3 4 134uH
+.ends SCHEMATIC1_TX
+
+**** RESUMING paramsim.cir ****
+.END
+
+**** 05/25/23 09:49:51 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     Diode MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               D1N4002         X_U2A.dx        X_U2A.dy        
+          IS   14.110000E-09  800.000000E-18  800.000000E-18 
+           N    1.984                                        
+         ISR  100.000000E-12                                 
+         IKF   94.81                                         
+          BV  100.1                                          
+         IBV   10                                            
+          RS     .03389                         1.000000E-03 
+          TT    4.761000E-06                                 
+         CJO   51.170000E-12                   10.000000E-12 
+          VJ     .3905                                       
+           M     .2762                                       
+
+
+**** 05/25/23 09:49:51 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     BJT MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               Q2N3055         Q2N2222         
+               NPN             NPN             
+       LEVEL    1               1            
+          IS  974.400000E-15   14.340000E-15 
+          BF   99.49          255.9          
+          NF    1               1            
+         VAF   50              74.03         
+         IKF    4.029            .2847       
+         ISE  902.500000E-12   14.340000E-15 
+          NE    1.941           1.307        
+          BR    2.949           6.092        
+          NR    1               1            
+         ISS    0               0            
+          RB     .1            10            
+          RE    0               0            
+          RC     .1             1            
+         CJE  569.100000E-12   22.010000E-12 
+         VJE     .75             .75         
+         MJE     .3333           .377        
+         CJC  276.000000E-12    7.306000E-12 
+         VJC     .75             .75         
+         MJC     .3333           .3416       
+        XCJC    1               1            
+         CJS    0               0            
+         VJS     .75             .75         
+          TF   39.110000E-09  411.100000E-12 
+         XTF    2               3            
+         VTF   10               1.7          
+         ITF   20                .6          
+          TR  971.700000E-09   46.910000E-09 
+         XTB    1.5             1.5          
+          KF    0               0            
+          AF    1               1            
+          CN    2.42            2.42         
+           D     .87             .87         
+
+
+**** 05/25/23 09:49:51 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     Junction FET MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U2A.jx1       X_U2A.jx2       
+               NJF             NJF             
+         VTO   -1              -1            
+        BETA  222.070000E-06  222.070000E-06 
+          IS  100.000000E-12  100.000000E-12 
+
+
+**** 05/25/23 09:49:51 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     Resistor MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               R_R1            R_R2            R_Rp            
+           R    1               1               1            
+
+
+**** 05/25/23 09:49:51 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     Capacitor MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               C_C             
+           C    1            
+
+
+**** 05/25/23 09:49:51 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM SET =    0     
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  OUT) 76.07E-09  (N155530)    0.0000                   (N155540)    0.0000    
+
+(N155638)    1.2502                   (N155848)    1.0735                       
+
+(N155974)    1.0735                   (N156010)     .5368                       
+
+(N156184) 266.2E-09                   (N156465)     .6251                       
+
+(N156469)     .6251                   (N157157)     .6251                       
+
+(N158247)     .3198                   (X_U2A.6)   -5.7462                       
+
+(X_U2A.7)    2.6575                   (X_U2A.8)    2.6575                       
+
+(X_U2A.9)    0.0000                   (X_U2A.10)     .7259                      
+
+(X_U2A.11)    1.1617                  (X_U2A.12)     .8568                      
+
+(X_U2A.53)   -1.0656                  (X_U2A.54)    2.3158                      
+
+(X_U2A.90)   40.6460                  (X_U2A.91)   40.0000                      
+
+(X_U2A.92)  -40.0000                  (X_U2A.99)     .6251                      
+
+(X_D9.XinstMyZenerModel.1)  -12.4300  (X_D9.XinstMyZenerModel.3)   13.5030      
+
+(X_D9.XinstMyZenerModel.9)-127.1E-15  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_Vin        0.000E+00
+    X_U2A.vb    -5.746E-05
+    X_U2A.vc    -6.251E+02
+    X_U2A.ve    -6.251E+02
+    X_U2A.vlim   4.065E-02
+    X_U2A.vlp    5.709E-05
+    X_U2A.vln   -8.065E-11
+
+    TOTAL POWER DISSIPATION   2.90E+03  WATTS
+
+
+**** 05/25/23 09:49:51 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM SET =     .1   
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  OUT) 76.07E-09  (N155530)    0.0000                   (N155540)    0.0000    
+
+(N155638)    1.2502                   (N155848)    1.0901                       
+
+(N155974)    1.0101                   (N156010)     .5316                       
+
+(N156184) 266.2E-09                   (N156465)     .6251                       
+
+(N156469)     .6251                   (N157157)     .6251                       
+
+(N158247)     .3198                   (X_U2A.6)   -5.7709                       
+
+(X_U2A.7)    2.6575                   (X_U2A.8)    2.6575                       
+
+(X_U2A.9)    0.0000                   (X_U2A.10)     .6690                      
+
+(X_U2A.11)    1.1211                  (X_U2A.12)     .8150                      
+
+(X_U2A.53)   -1.0656                  (X_U2A.54)    2.3158                      
+
+(X_U2A.90)   40.6460                  (X_U2A.91)   40.0000                      
+
+(X_U2A.92)  -40.0000                  (X_U2A.99)     .6251                      
+
+(X_D9.XinstMyZenerModel.1)  -12.4130  (X_D9.XinstMyZenerModel.3)   13.5030      
+
+(X_D9.XinstMyZenerModel.9)-126.9E-15  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_Vin        0.000E+00
+    X_U2A.vb    -5.771E-05
+    X_U2A.vc    -6.251E+02
+    X_U2A.ve    -6.251E+02
+    X_U2A.vlim   4.065E-02
+    X_U2A.vlp    5.734E-05
+    X_U2A.vln   -8.065E-11
+
+    TOTAL POWER DISSIPATION   2.90E+03  WATTS
+
+
+**** 05/25/23 09:49:51 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM SET =     .2   
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  OUT) 76.07E-09  (N155530)    0.0000                   (N155540)    0.0000    
+
+(N155638)    1.2502                   (N155848)    1.1036                       
+
+(N155974)     .9570                   (N156010)     .5317                       
+
+(N156184) 266.2E-09                   (N156465)     .6251                       
+
+(N156469)     .6251                   (N157157)     .6251                       
+
+(N158247)     .3198                   (X_U2A.6)   -5.6765                       
+
+(X_U2A.7)    2.6574                   (X_U2A.8)    2.6574                       
+
+(X_U2A.9)    0.0000                   (X_U2A.10)     .6233                      
+
+(X_U2A.11)    1.0830                  (X_U2A.12)     .7819                      
+
+(X_U2A.53)   -1.0656                  (X_U2A.54)    2.3158                      
+
+(X_U2A.90)   40.6460                  (X_U2A.91)   40.0000                      
+
+(X_U2A.92)  -40.0000                  (X_U2A.99)     .6251                      
+
+(X_D9.XinstMyZenerModel.1)  -12.4000  (X_D9.XinstMyZenerModel.3)   13.5030      
+
+(X_D9.XinstMyZenerModel.9)-126.8E-15  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_Vin        0.000E+00
+    X_U2A.vb    -5.676E-05
+    X_U2A.vc    -6.251E+02
+    X_U2A.ve    -6.251E+02
+    X_U2A.vlim   4.065E-02
+    X_U2A.vlp    5.639E-05
+    X_U2A.vln   -8.065E-11
+
+    TOTAL POWER DISSIPATION   2.90E+03  WATTS
+
+
+**** 05/25/23 09:49:51 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM SET =     .3   
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  OUT) 76.07E-09  (N155530)    0.0000                   (N155540)    0.0000    
+
+(N155638)    1.2502                   (N155848)    1.1144                       
+
+(N155974)     .9108                   (N156010)     .5357                       
+
+(N156184) 266.2E-09                   (N156465)     .6251                       
+
+(N156469)     .6251                   (N157157)     .6251                       
+
+(N158247)     .3198                   (X_U2A.6)   -5.5204                       
+
+(X_U2A.7)    2.6574                   (X_U2A.8)    2.6574                       
+
+(X_U2A.9)    0.0000                   (X_U2A.10)     .5859                      
+
+(X_U2A.11)    1.0482                  (X_U2A.12)     .7553                      
+
+(X_U2A.53)   -1.0656                  (X_U2A.54)    2.3158                      
+
+(X_U2A.90)   40.6450                  (X_U2A.91)   40.0000                      
+
+(X_U2A.92)  -40.0000                  (X_U2A.99)     .6251                      
+
+(X_D9.XinstMyZenerModel.1)  -12.3890  (X_D9.XinstMyZenerModel.3)   13.5030      
+
+(X_D9.XinstMyZenerModel.9)-126.7E-15  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_Vin        0.000E+00
+    X_U2A.vb    -5.520E-05
+    X_U2A.vc    -6.251E+02
+    X_U2A.ve    -6.251E+02
+    X_U2A.vlim   4.065E-02
+    X_U2A.vlp    5.481E-05
+    X_U2A.vln   -8.065E-11
+
+    TOTAL POWER DISSIPATION   2.90E+03  WATTS
+
+
+**** 05/25/23 09:49:51 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM SET =     .4   
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  OUT) 76.07E-09  (N155530)    0.0000                   (N155540)    0.0000    
+
+(N155638)    1.2502                   (N155848)    1.1229                       
+
+(N155974)     .8686                   (N156010)     .5429                       
+
+(N156184) 266.2E-09                   (N156465)     .6254                       
+
+(N156469)     .6254                   (N157157)     .6251                       
+
+(N158247)     .3198                   (X_U2A.6)   -5.3322                       
+
+(X_U2A.7)    2.6574                   (X_U2A.8)    2.6574                       
+
+(X_U2A.9)    0.0000                   (X_U2A.10)     .5548                      
+
+(X_U2A.11)    1.0167                  (X_U2A.12)     .7338                      
+
+(X_U2A.53)   -1.0656                  (X_U2A.54)    2.3158                      
+
+(X_U2A.90)   40.6440                  (X_U2A.91)   40.0000                      
+
+(X_U2A.92)  -40.0000                  (X_U2A.99)     .6251                      
+
+(X_D9.XinstMyZenerModel.1)  -12.3800  (X_D9.XinstMyZenerModel.3)   13.5030      
+
+(X_D9.XinstMyZenerModel.9)-126.6E-15  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_Vin        0.000E+00
+    X_U2A.vb    -5.332E-05
+    X_U2A.vc    -6.251E+02
+    X_U2A.ve    -6.251E+02
+    X_U2A.vlim   4.064E-02
+    X_U2A.vlp    5.291E-05
+    X_U2A.vln   -8.065E-11
+
+    TOTAL POWER DISSIPATION   2.90E+03  WATTS
+
+
+**** 05/25/23 09:49:51 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM SET =     .5   
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  OUT) 76.07E-09  (N155530)    0.0000                   (N155540)    0.0000    
+
+(N155638)    1.2502                   (N155848)    1.1295                       
+
+(N155974)     .8278                   (N156010)     .5519                       
+
+(N156184) 266.2E-09                   (N156465)     .6250                       
+
+(N156469)     .6250                   (N157157)     .6251                       
+
+(N158247)     .3198                   (X_U2A.6)   -5.1312                       
+
+(X_U2A.7)    2.6573                   (X_U2A.8)    2.6573                       
+
+(X_U2A.9)    0.0000                   (X_U2A.10)     .5293                      
+
+(X_U2A.11)     .9894                  (X_U2A.12)     .7172                      
+
+(X_U2A.53)   -1.0656                  (X_U2A.54)    2.3158                      
+
+(X_U2A.90)   40.6430                  (X_U2A.91)   40.0000                      
+
+(X_U2A.92)  -40.0000                  (X_U2A.99)     .6251                      
+
+(X_D9.XinstMyZenerModel.1)  -12.3740  (X_D9.XinstMyZenerModel.3)   13.5030      
+
+(X_D9.XinstMyZenerModel.9)-126.5E-15  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_Vin        0.000E+00
+    X_U2A.vb    -5.131E-05
+    X_U2A.vc    -6.251E+02
+    X_U2A.ve    -6.251E+02
+    X_U2A.vlim   4.064E-02
+    X_U2A.vlp    5.088E-05
+    X_U2A.vln   -8.064E-11
+
+    TOTAL POWER DISSIPATION   2.90E+03  WATTS
+
+
+Starting pseudo-transient algorithm.
+
+**** 05/25/23 09:49:51 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM SET =     .6   
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  OUT)     .0459  (N155530)    0.0000                   (N155540)-7.822E-21    
+
+(N155638)    2.8749                   (N155848)    2.6133                       
+
+(N155974)    1.8291                   (N156010)    1.3065                       
+
+(N156184)     .1607                   (N156465)    1.4375                       
+
+(N156469)    1.4375                   (N157157)    1.4387                       
+
+(N158247)     .8578                   (X_U2A.6)  -16.0110                       
+
+(X_U2A.7)    3.4723                   (X_U2A.8)    3.4723                       
+
+(X_U2A.9)    0.0000                   (X_U2A.10)    1.6600                      
+
+(X_U2A.11)    2.8749                  (X_U2A.12)    2.0255                      
+
+(X_U2A.53)     .5591                  (X_U2A.54)    2.3158                      
+
+(X_U2A.90)   40.6730                  (X_U2A.91)   40.0000                      
+
+(X_U2A.92)  -40.0000                  (X_U2A.99)    1.4375                      
+
+(X_D9.XinstMyZenerModel.1)  -10.8900  (X_D9.XinstMyZenerModel.3)   13.5030      
+
+(X_D9.XinstMyZenerModel.9)-111.3E-15  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_Vin       -7.822E-18
+    X_U2A.vb    -1.601E-04
+    X_U2A.vc    -4.616E-01
+    X_U2A.ve    -4.211E-01
+    X_U2A.vlim   4.067E-02
+    X_U2A.vlp    1.608E-04
+    X_U2A.vln   -8.067E-11
+
+    TOTAL POWER DISSIPATION   2.04E+00  WATTS
+
+
+**** 05/25/23 09:49:51 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM SET =     .7   
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  OUT) 76.07E-09  (N155530)    0.0000                   (N155540)    0.0000    
+
+(N155638)    1.2502                   (N155848)    1.1359                       
+
+(N155974)     .7360                   (N156010)     .5662                       
+
+(N156184) 266.2E-09                   (N156465)     .6250                       
+
+(N156469)     .6250                   (N157157)     .6251                       
+
+(N158247)     .3198                   (X_U2A.6)   -4.7677                       
+
+(X_U2A.7)    2.6572                   (X_U2A.8)    2.6572                       
+
+(X_U2A.9)    0.0000                   (X_U2A.10)     .4976                      
+
+(X_U2A.11)     .9552                  (X_U2A.12)     .7023                      
+
+(X_U2A.53)   -1.0656                  (X_U2A.54)    2.3158                      
+
+(X_U2A.90)   40.6410                  (X_U2A.91)   40.0000                      
+
+(X_U2A.92)  -40.0000                  (X_U2A.99)     .6251                      
+
+(X_D9.XinstMyZenerModel.1)  -12.3670  (X_D9.XinstMyZenerModel.3)   13.5030      
+
+(X_D9.XinstMyZenerModel.9)-126.5E-15  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_Vin        0.000E+00
+    X_U2A.vb    -4.768E-05
+    X_U2A.vc    -6.251E+02
+    X_U2A.ve    -6.251E+02
+    X_U2A.vlim   4.064E-02
+    X_U2A.vlp    4.721E-05
+    X_U2A.vln   -8.064E-11
+
+    TOTAL POWER DISSIPATION   2.90E+03  WATTS
+
+
+Starting pseudo-transient algorithm.
+
+**** 05/25/23 09:49:51 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM SET =     .8   
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  OUT)     .0459  (N155530)    0.0000                   (N155540) 754.8E-21    
+
+(N155638)    2.8749                   (N155848)    2.6133                       
+
+(N155974)    1.5680                   (N156010)    1.3067                       
+
+(N156184)     .1607                   (N156465)    1.4375                       
+
+(N156469)    1.4375                   (N157157)    1.4387                       
+
+(N158247)     .8578                   (X_U2A.6)  -16.0100                       
+
+(X_U2A.7)    3.4723                   (X_U2A.8)    3.4723                       
+
+(X_U2A.9)    0.0000                   (X_U2A.10)    1.5604                      
+
+(X_U2A.11)    2.8749                  (X_U2A.12)    2.0255                      
+
+(X_U2A.53)     .5591                  (X_U2A.54)    2.3158                      
+
+(X_U2A.90)   40.6730                  (X_U2A.91)   40.0000                      
+
+(X_U2A.92)  -40.0000                  (X_U2A.99)    1.4375                      
+
+(X_D9.XinstMyZenerModel.1)  -10.8900  (X_D9.XinstMyZenerModel.3)   13.5030      
+
+(X_D9.XinstMyZenerModel.9)-111.3E-15  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_Vin        7.548E-16
+    X_U2A.vb    -1.601E-04
+    X_U2A.vc    -4.616E-01
+    X_U2A.ve    -4.211E-01
+    X_U2A.vlim   4.067E-02
+    X_U2A.vlp    1.608E-04
+    X_U2A.vln   -8.067E-11
+
+    TOTAL POWER DISSIPATION   2.04E+00  WATTS
+
+
+**** 05/25/23 09:49:51 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM SET =     .9   
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  OUT) 76.07E-09  (N155530)    0.0000                   (N155540)    0.0000    
+
+(N155638)    1.2502                   (N155848)    1.1364                       
+
+(N155974)     .6250                   (N156010)     .5682                       
+
+(N156184) 266.2E-09                   (N156465)     .6250                       
+
+(N156469)     .6250                   (N157157)     .6251                       
+
+(N158247)     .3198                   (X_U2A.6)   -4.3998                       
+
+(X_U2A.7)    2.6571                   (X_U2A.8)    2.6571                       
+
+(X_U2A.9)    0.0000                   (X_U2A.10)     .4860                      
+
+(X_U2A.11)     .9429                  (X_U2A.12)     .7095                      
+
+(X_U2A.53)   -1.0656                  (X_U2A.54)    2.3158                      
+
+(X_U2A.90)   40.6390                  (X_U2A.91)   40.0000                      
+
+(X_U2A.92)  -40.0000                  (X_U2A.99)     .6251                      
+
+(X_D9.XinstMyZenerModel.1)  -12.3670  (X_D9.XinstMyZenerModel.3)   13.5030      
+
+(X_D9.XinstMyZenerModel.9)-126.4E-15  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_Vin        0.000E+00
+    X_U2A.vb    -4.400E-05
+    X_U2A.vc    -6.251E+02
+    X_U2A.ve    -6.251E+02
+    X_U2A.vlim   4.064E-02
+    X_U2A.vlp    4.349E-05
+    X_U2A.vln   -8.064E-11
+
+    TOTAL POWER DISSIPATION   2.90E+03  WATTS
+
+
+**** 05/25/23 09:49:51 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM SET =    1     
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  OUT) 76.07E-09  (N155530)    0.0000                   (N155540)    0.0000    
+
+(N155638)    1.2502                   (N155848)    1.1365                       
+
+(N155974)     .5682                   (N156010)     .5682                       
+
+(N156184) 266.2E-09                   (N156465)     .6250                       
+
+(N156469)     .6250                   (N157157)     .6251                       
+
+(N158247)     .3198                   (X_U2A.6)   -4.1915                       
+
+(X_U2A.7)    2.6570                   (X_U2A.8)    2.6570                       
+
+(X_U2A.9)    0.0000                   (X_U2A.10)     .4808                      
+
+(X_U2A.11)     .9373                  (X_U2A.12)     .7149                      
+
+(X_U2A.53)   -1.0656                  (X_U2A.54)    2.3158                      
+
+(X_U2A.90)   40.6380                  (X_U2A.91)   40.0000                      
+
+(X_U2A.92)  -40.0000                  (X_U2A.99)     .6251                      
+
+(X_D9.XinstMyZenerModel.1)  -12.3670  (X_D9.XinstMyZenerModel.3)   13.5030      
+
+(X_D9.XinstMyZenerModel.9)-126.4E-15  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_Vin        0.000E+00
+    X_U2A.vb    -4.191E-05
+    X_U2A.vc    -6.251E+02
+    X_U2A.ve    -6.251E+02
+    X_U2A.vlim   4.064E-02
+    X_U2A.vlp    4.138E-05
+    X_U2A.vln   -8.064E-11
+
+    TOTAL POWER DISSIPATION   2.90E+03  WATTS
+
+
+
+          JOB CONCLUDED
+
+**** 05/25/23 09:49:51 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-paramsim"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\paramsim.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+ ****     CURRENT STEP                     PARAM SET =    1     
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =        2.91
+

@@ -1,0 +1,72 @@
+(ExpressProject "proiectpac"
+  (ProjectVersion "19981106")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library")
+    (NoModify)
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (PSPICE_Regenerate_Netlist_Flag "FALSE")
+    (File ".\proiectpac.dsn"
+      (Type "Schematic Design")))
+  (Folder "Outputs"
+    (File ".\proiectpac-pspicefiles\schematic1\schematic1.net"
+      (Type "Report"))
+    (File ".\proiectpac-schematic1.opt"
+      (Type "Report")))
+  (Folder "PSpice Resources"
+    (Folder "Model Libraries")
+    (Folder "Stimulus Files")
+    (Folder "Include Files")
+    (Folder "Simulation Profiles"
+      (File.PSpice.{09528990-3187-11D2-BC7B-00A0C90CBF91}
+         ".\proiectpac-pspicefiles\schematic1\analizaparametrica.sim"
+        (DisplayName "SCHEMATIC1-AnalizaParametrica")
+        (Type "PSpice Profile"))
+      (ActiveProfile ".\proiectpac-pspicefiles\schematic1\parametric.sim")
+      (File.PSpice.{09528990-3187-11D2-BC7B-00A0C90CBF91}
+         ".\proiectpac-pspicefiles\schematic1\parametric.sim"
+        (DisplayName "SCHEMATIC1-Parametric")
+        (Type "PSpice Profile"))))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (PartMRUSelector
+    (PARAM
+      (FullPartName "PARAM.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\PSPICE\SPECIAL.OLB")
+      (DeviceIndex "0"))
+    (OPTPARAM
+      (FullPartName "OPTPARAM.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\PSPICE\MARKER.ETC")
+      (DeviceIndex "0"))
+    (Q2N3055
+      (FullPartName "Q2N3055.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\PSPICE\PWRBJT.OLB")
+      (DeviceIndex "0")))
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "D:\UTCN\Teme\AN II\CAD\Proiect\Pac\4\proiectpac.dsn")
+      (Path "Design Resources"
+         "D:\UTCN\Teme\AN II\CAD\Proiect\Pac\4\proiectpac.dsn" "SCHEMATIC1")
+      (Path "Outputs")
+      (Select "Design Resources"
+         "D:\UTCN\Teme\AN II\CAD\Proiect\Pac\4\proiectpac.dsn" "SCHEMATIC1"
+         "PAGE1"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -8 -31 0 200 0 395"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 2 3 -1 -1 -8 -31 130 1460 130 451")
+        (Scroll "-229 11")
+        (Zoom "100")
+        (Occurrence "/"))
+      (Path "D:\UTCN\TEME\AN II\CAD\PROIECT\PAC\4\PROIECTPAC.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "PAGE1")))
+  (MPSSessionName "Raul"))

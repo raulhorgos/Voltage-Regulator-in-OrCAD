@@ -1,0 +1,6 @@
+ lib=C:\Cadence\SPB_17.2\tools\PSpice\Library\diode.lib, offset=14065, size=182
+ lib=C:\Cadence\SPB_17.2\tools\PSpice\Library\jdiode.lib, offset=7705, size=160
+ lib=C:\Cadence\SPB_17.2\tools\PSpice\Library\pwrbjt.lib, offset=5229, size=806
+ lib=C:\Cadence\SPB_17.2\tools\PSpice\Library\bipolar.lib, offset=13005, size=562
+ lib=C:\Cadence\SPB_17.2\tools\PSpice\Library\opamp.lib, offset=54585, size=371
+ lib=C:\Cadence\SPB_17.2\tools\PSpice\Library\opamp.lib, offset=53165, size=1419

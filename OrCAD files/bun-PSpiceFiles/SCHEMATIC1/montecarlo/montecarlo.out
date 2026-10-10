@@ -1,0 +1,911 @@
+
+**** 05/25/23 08:25:10 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-montecarlo"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\montecarlo.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "montecarlo.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 1s 0 SKIPBP 
+.MC 100 TRAN V([OUT]) YMAX OUTPUT ALL SEED=200 
+.OPTIONS DISTRIBUTION GAUSS
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source BUN
+V_Vin         N155530 0  
++SIN 0 155 60Hz 0 0 0
+C_C         N155638 0 C_C 10m IC=0 
+.model        C_C CAP C=1 DEV=20%
+R_Rl         0 OUT  {r}  
+D_D3         0 N156469 D1N4002 
+R_R1         0 N156010 R_R1 5k  
+.model        R_R1 RES R=1 DEV=5%
+R_R2         N155848 N155638 R_R2 1k  
+.model        R_R2 RES R=1 DEV=5%
+Q_Q2         N155638 N157157 N158247 Q2N3055
+D_D2         N156469 N155638 D1N4002 
+X_POT    N156010 N155848 N155974 SCHEMATIC1_POT 
+D_D1         N156465 N155638 D1N4002 
+R_Rp         N156184 OUT R_Rp 0.25  
+.model        R_Rp RES R=1 DEV=5%
+Q_Qp         N157157 N156184 OUT Q2N2222
+R_R3         N155530 N155540  1m  
+D_D4         0 N156465 D1N4002 
+X_TX    N155540 0 N156465 N156469 SCHEMATIC1_TX 
+X_D9         0 N155848 Zener PARAMS: VZT=14 TCBV=1.7 
+X_U2A         N155974 OUT N155638 0 N157157 TL082
+Q_Q3         N155638 N158247 N156184 Q2N3055
+.PARAM  r=1k set=1
+
+.subckt SCHEMATIC1_POT 1 2 t  
+RT_POT         1 t {(5k*(1-{set}))+.001}
+RB_POT         t 2 {(5k*{set})+.001}
+.ends SCHEMATIC1_POT
+
+.subckt SCHEMATIC1_TX 1 2 3 4  
+K_TX         L1_TX L2_TX 1
+L1_TX         1 2 10mH
+L2_TX         3 4 134uH
+.ends SCHEMATIC1_TX
+
+**** RESUMING montecarlo.cir ****
+.END
+
+**** 05/25/23 08:25:10 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-montecarlo"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\montecarlo.sim ] 
+
+
+ ****     Diode MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               D1N4002         X_U2A.dx        X_U2A.dy        
+          IS   14.110000E-09  800.000000E-18  800.000000E-18 
+           N    1.984                                        
+         ISR  100.000000E-12                                 
+         IKF   94.81                                         
+          BV  100.1                                          
+         IBV   10                                            
+          RS     .03389                         1.000000E-03 
+          TT    4.761000E-06                                 
+         CJO   51.170000E-12                   10.000000E-12 
+          VJ     .3905                                       
+           M     .2762                                       
+
+
+**** 05/25/23 08:25:10 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-montecarlo"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\montecarlo.sim ] 
+
+
+ ****     BJT MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               Q2N3055         Q2N2222         
+               NPN             NPN             
+       LEVEL    1               1            
+          IS  974.400000E-15   14.340000E-15 
+          BF   99.49          255.9          
+          NF    1               1            
+         VAF   50              74.03         
+         IKF    4.029            .2847       
+         ISE  902.500000E-12   14.340000E-15 
+          NE    1.941           1.307        
+          BR    2.949           6.092        
+          NR    1               1            
+         ISS    0               0            
+          RB     .1            10            
+          RE    0               0            
+          RC     .1             1            
+         CJE  569.100000E-12   22.010000E-12 
+         VJE     .75             .75         
+         MJE     .3333           .377        
+         CJC  276.000000E-12    7.306000E-12 
+         VJC     .75             .75         
+         MJC     .3333           .3416       
+        XCJC    1               1            
+         CJS    0               0            
+         VJS     .75             .75         
+          TF   39.110000E-09  411.100000E-12 
+         XTF    2               3            
+         VTF   10               1.7          
+         ITF   20                .6          
+          TR  971.700000E-09   46.910000E-09 
+         XTB    1.5             1.5          
+          KF    0               0            
+          AF    1               1            
+          CN    2.42            2.42         
+           D     .87             .87         
+
+
+**** 05/25/23 08:25:10 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-montecarlo"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\montecarlo.sim ] 
+
+
+ ****     Junction FET MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U2A.jx1       X_U2A.jx2       
+               NJF             NJF             
+         VTO   -1              -1            
+        BETA  222.070000E-06  222.070000E-06 
+          IS  100.000000E-12  100.000000E-12 
+
+
+**** 05/25/23 08:25:10 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-montecarlo"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\montecarlo.sim ] 
+
+
+ ****     Resistor MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               R_R1            R_R2            R_Rp            
+           R    1               1               1            
+
+
+**** 05/25/23 08:25:10 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-montecarlo"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\montecarlo.sim ] 
+
+
+ ****     Capacitor MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               C_C             
+           C    1            
+
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+
+WARNING(ORPSIM-16534): Using high values of ITL4 for Speed Level > 0 may increase total simulation job time.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+
+ERROR(ORPSIM-15138): Convergence problem in Transient Analysis at Time =  .472.
+         Time step =  293.0E-21, minimum allowable step size =  1.000E-18
+
+  These voltages failed to converge:
+
+    V(OUT)                    =     6.975V  \     7.301V
+    V(N156469)                =     1.659V  \  -161.99mV
+    V(N157157)                =     7.539V  \     8.370V
+    V(N158247)                =     7.544V  \     7.887V
+    V(N156465)                =     14.50V  \     16.32V
+    V(N156184)                =     7.107V  \     7.303V
+    V(X_U2A.6)                =    34.89KV  \   -5.479mV
+    V(X_U2A.7)                =    34.90KV  \     8.366V
+    V(X_U2A.10)               =     7.539V  \     7.702V
+    V(X_U2A.90)               =   697.83KV  \   -94.67mV
+    V(X_U2A.8)                =    34.90KV  \     8.366V
+
+  These supply currents failed to converge:
+
+    I(X_U2A.egnd)             =   -698.18A  \    94.43uA
+    I(X_TX.L1_TX)             =     43.91A  \     56.35A
+    I(X_TX.L2_TX)             =    107.47A  \   -68.82nA
+    I(V_Vin)                  =    -43.91A  \    -56.35A
+    I(X_U2A.vb)               =    39.14mA  \  -674.50pA
+    I(X_U2A.vc)               =    832.90A  \   -8.836uA
+    I(X_U2A.ve)               =   -830.52A  \    8.423uA
+    I(X_U2A.vlim)             =    697.83A  \   -94.67uA
+    I(X_U2A.vlp)              =    1.166uA  \   -40.12pA
+    I(X_U2A.vln)              =   -1.166uA  \   -39.92pA
+    I(X_U2A.hlim)             =   -1.396uA  \   189.34fA
+
+  These devices failed to converge:
+    X_U2A.dlp X_D9.XinstMyZenerModel.DF1 X_U2A.fb  X_U2A.j1  X_U2A.j2  
+    Q_Qp      
+
+ERROR(ORPSIM-15659): Discontinuing simulation due to convergence problem
+
+
+
+  Last node voltages tried were:
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  OUT)    6.9753  (N155530)  142.4400                   (N155540)  142.3900    
+
+(N155638)   16.1580                   (N155848)   13.9530                       
+
+(N155974)    7.3012                   (N156010)    7.3012                       
+
+(N156184)    7.1067                   (N156465)   14.4990                       
+
+(N156469)    1.6590                   (N157157)    7.5392                       
+
+(N158247)    7.5443                   (X_U2A.6) 34.89E+03                       
+
+(X_U2A.7) 34.90E+03                   (X_U2A.8) 34.90E+03                       
+
+(X_U2A.9)    0.0000                   (X_U2A.10)    7.5389                      
+
+(X_U2A.11)   15.7340                  (X_U2A.12)   15.7340                      
+
+(X_U2A.53)   13.8420                  (X_U2A.54)    2.3158                      
+
+(X_U2A.90) 697.8E+03                  (X_U2A.91)   40.0000                      
+
+(X_U2A.92)  -40.0000                  (X_U2A.99)    8.0788                      
+
+(X_D9.XinstMyZenerModel.1)     .4501  (X_D9.XinstMyZenerModel.3)   13.5030      
+
+(X_D9.XinstMyZenerModel.9) 10.05E-06  
+
+
+The following unused Convergence options can be added to simulation:
+CSHUNT=1e-12
+DIODERS=1e-4
+DIODECJO=2e-12
+BJTCJ=1e-11
+JFETCJ=1e-12
+MOSCJ=1e-12
+AutoConverge
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+
+ERROR(ORPSIM-15138): Convergence problem in Transient Analysis at Time =  5.704E-03.
+         Time step =  125.5E-21, minimum allowable step size =  1.000E-18
+
+  These voltages failed to converge:
+
+    V(OUT)                    =     9.242V  \     6.879V
+    V(N156469)                =  -249.82mV  \    8.916mV
+    V(N157157)                =     13.98V  \     7.947V
+    V(N158247)                =      9.95V  \     7.463V
+    V(N156465)                =     15.27V  \     15.01V
+    V(N156184)                =     8.307V  \     6.881V
+    V(X_U2A.6)                =   -59.85KV  \     1.151V
+    V(X_U2A.7)                =   -59.84KV  \     9.097V
+    V(X_U2A.10)               =     8.459V  \     7.279V
+    V(X_U2A.90)               =   -1.197MV  \     23.00V
+    V(X_U2A.8)                =   -59.84KV  \     9.097V
+
+  These supply currents failed to converge:
+
+    I(X_U2A.egnd)             =    1.198KA  \   -23.01mA
+    I(X_TX.L1_TX)             =     64.39A  \     62.63A
+    I(X_TX.L2_TX)             =    -15.27A  \  -270.05uA
+    I(V_Vin)                  =    -64.39A  \    -62.63A
+    I(X_U2A.vb)               =  -284.63mA  \  -393.73nA
+    I(X_U2A.vc)               =   -6.053KA  \   -8.579mA
+    I(X_U2A.ve)               =    6.030KA  \    8.043mA
+    I(X_U2A.vlim)             =   -1.197KA  \    23.00mA
+    I(X_U2A.vlp)              =    6.230uA  \   -24.37pA
+    I(X_U2A.vln)              =   -6.230uA  \   -62.95pA
+    I(X_U2A.hlim)             =    2.394uA  \   -46.01pA
+
+  These devices failed to converge:
+    X_U2A.dln X_D9.XinstMyZenerModel.DF1 X_U2A.fb  X_U2A.j1  X_U2A.j2  
+    Q_Qp      
+
+ERROR(ORPSIM-15659): Discontinuing simulation due to convergence problem
+
+
+
+  Last node voltages tried were:
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  OUT)    9.2417  (N155530)  129.6900                   (N155540)  129.6200    
+
+(N155638)   15.0230                   (N155848)   13.6860                       
+
+(N155974)    6.8787                   (N156010)    6.8787                       
+
+(N156184)    8.3068                   (N156465)   15.2730                       
+
+(N156469)    -.2498                   (N157157)   13.9770                       
+
+(N158247)    9.9489                   (X_U2A.6)-59.85E+03                       
+
+(X_U2A.7)-59.84E+03                   (X_U2A.8)-59.84E+03                       
+
+(X_U2A.9)    0.0000                   (X_U2A.10)    8.4591                      
+
+(X_U2A.11)   14.5970                  (X_U2A.12)   14.5970                      
+
+(X_U2A.53)   12.7070                  (X_U2A.54)    2.3158                      
+
+(X_U2A.90)-1.197E+06                  (X_U2A.91)   40.0000                      
+
+(X_U2A.92)  -40.0000                  (X_U2A.99)    7.5116                      
+
+(X_D9.XinstMyZenerModel.1)     .1830  (X_D9.XinstMyZenerModel.3)   13.5030      
+
+(X_D9.XinstMyZenerModel.9) 339.8E-15  
+
+
+The following unused Convergence options can be added to simulation:
+CSHUNT=1e-12
+DIODERS=1e-4
+DIODECJO=2e-12
+BJTCJ=1e-11
+JFETCJ=1e-12
+MOSCJ=1e-12
+AutoConverge
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+
+ERROR(ORPSIM-15138): Convergence problem in Transient Analysis at Time =  .939.
+         Time step =  142.5E-21, minimum allowable step size =  1.000E-18
+
+  These voltages failed to converge:
+
+    V(OUT)                    =     8.743V  \     6.742V
+    V(N156469)                =    38.19mV  \   -22.89mV
+    V(N157157)                =     12.97V  \     7.806V
+    V(N158247)                =     9.452V  \     7.325V
+    V(N156465)                =     16.09V  \     16.16V
+    V(N156184)                =     7.965V  \     6.743V
+    V(X_U2A.6)                =   -22.34KV  \    18.03mV
+    V(X_U2A.7)                =   -22.33KV  \     7.825V
+    V(X_U2A.10)               =     8.142V  \     7.143V
+    V(X_U2A.90)               =  -446.83KV  \   387.67mV
+    V(X_U2A.8)                =   -22.33KV  \     7.825V
+
+  These supply currents failed to converge:
+
+    I(X_U2A.egnd)             =    447.05A  \  -388.58uA
+    I(X_TX.L1_TX)             =     67.98A  \     68.40A
+    I(X_TX.L2_TX)             =     3.604A  \  -426.49uA
+    I(V_Vin)                  =    -67.98A  \    -68.40A
+    I(X_U2A.vb)               =  -243.19mA  \   173.35nA
+    I(X_U2A.vc)               =   -5.164KA  \    3.598mA
+    I(X_U2A.ve)               =    5.159KA  \   -3.750mA
+    I(X_U2A.vlim)             =   -446.83A  \   387.67uA
+    I(X_U2A.vlp)              =    2.760uA  \   -45.54pA
+    I(X_U2A.vln)              =   -2.760uA  \   -41.77pA
+    I(X_U2A.hlim)             =   893.65nA  \  -775.33fA
+
+  These devices failed to converge:
+    X_U2A.dln X_D9.XinstMyZenerModel.DF1 X_U2A.fb  X_U2A.j1  X_U2A.j2  
+    Q_Qp      
+
+ERROR(ORPSIM-15659): Discontinuing simulation due to convergence problem
+
+
+
+  Last node voltages tried were:
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  OUT)    8.7429  (N155530)  139.8300                   (N155540)  139.7600    
+
+(N155638)   16.1330                   (N155848)   13.9510                       
+
+(N155974)    6.7419                   (N156010)    6.7418                       
+
+(N156184)    7.9650                   (N156465)   16.0940                       
+
+(N156469)     .0382                   (N157157)   12.9660                       
+
+(N158247)    9.4520                   (X_U2A.6)-22.34E+03                       
+
+(X_U2A.7)-22.33E+03                   (X_U2A.8)-22.33E+03                       
+
+(X_U2A.9)    0.0000                   (X_U2A.10)    8.1419                      
+
+(X_U2A.11)   15.7080                  (X_U2A.12)   15.7080                      
+
+(X_U2A.53)   13.8170                  (X_U2A.54)    2.3158                      
+
+(X_U2A.90)-446.8E+03                  (X_U2A.91)   40.0000                      
+
+(X_U2A.92)  -40.0000                  (X_U2A.99)    8.0663                      
+
+(X_D9.XinstMyZenerModel.1)     .4482  (X_D9.XinstMyZenerModel.3)   13.5030      
+
+(X_D9.XinstMyZenerModel.9) 8.927E-06  
+
+
+The following unused Convergence options can be added to simulation:
+CSHUNT=1e-12
+DIODERS=1e-4
+DIODECJO=2e-12
+BJTCJ=1e-11
+JFETCJ=1e-12
+MOSCJ=1e-12
+AutoConverge
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+
+ERROR(ORPSIM-15138): Convergence problem in Transient Analysis at Time =  .014.
+         Time step =  700.8E-21, minimum allowable step size =  1.000E-18
+
+  These voltages failed to converge:
+
+    V(OUT)                    =     6.842V  \     6.795V
+    V(N156469)                =     15.85V  \     16.03V
+    V(N157157)                =     7.980V  \     7.860V
+    V(N158247)                =     7.428V  \     7.378V
+    V(N156465)                =   -65.71mV  \  -251.52mV
+    V(N156184)                =     6.825V  \     6.797V
+    V(X_U2A.6)                =   -25.34KV  \  -148.43mV
+    V(X_U2A.7)                =   -25.33KV  \     7.713V
+    V(X_U2A.10)               =     7.219V  \     7.196V
+    V(X_U2A.90)               =  -506.77KV  \    -2.954V
+    V(X_U2A.8)                =   -25.33KV  \     7.713V
+
+  These supply currents failed to converge:
+
+    I(X_U2A.egnd)             =    507.03A  \    2.955mA
+    I(X_TX.L1_TX)             =     27.46A  \     26.19A
+    I(X_TX.L2_TX)             =    -10.97A  \    38.10uA
+    I(V_Vin)                  =    -27.46A  \    -26.19A
+    I(X_U2A.vb)               =   -5.611mA  \    2.969nA
+    I(X_U2A.vc)               =   -120.27A  \    52.21uA
+    I(X_U2A.ve)               =    119.49A  \   -63.65uA
+    I(X_U2A.vlim)             =   -506.77A  \   -2.954mA
+    I(X_U2A.vlp)              =   -1.108uA  \   -38.69pA
+    I(X_U2A.vln)              =    1.108uA  \   -37.71pA
+    I(X_U2A.hlim)             =    1.014uA  \    5.907pA
+
+  These devices failed to converge:
+    X_U2A.dln X_D9.XinstMyZenerModel.DF1 X_U2A.fb  X_U2A.j1  X_U2A.j2  
+
+ERROR(ORPSIM-15659): Discontinuing simulation due to convergence problem
+
+
+
+  Last node voltages tried were:
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  OUT)    6.8422  (N155530) -140.6600                   (N155540) -140.6900    
+
+(N155638)   15.7830                   (N155848)   13.9420                       
+
+(N155974)    6.7948                   (N156010)    6.7948                       
+
+(N156184)    6.8249                   (N156465)    -.0657                       
+
+(N156469)   15.8490                   (N157157)    7.9799                       
+
+(N158247)    7.4276                   (X_U2A.6)-25.34E+03                       
+
+(X_U2A.7)-25.33E+03                   (X_U2A.8)-25.33E+03                       
+
+(X_U2A.9)    0.0000                   (X_U2A.10)    7.2193                      
+
+(X_U2A.11)   15.3600                  (X_U2A.12)   15.3600                      
+
+(X_U2A.53)   13.4670                  (X_U2A.54)    2.3158                      
+
+(X_U2A.90)-506.8E+03                  (X_U2A.91)   40.0000                      
+
+(X_U2A.92)  -40.0000                  (X_U2A.99)    7.8915                      
+
+(X_D9.XinstMyZenerModel.1)     .4383  (X_D9.XinstMyZenerModel.3)   13.5030      
+
+(X_D9.XinstMyZenerModel.9) 4.705E-06  
+
+
+The following unused Convergence options can be added to simulation:
+CSHUNT=1e-12
+DIODERS=1e-4
+DIODECJO=2e-12
+BJTCJ=1e-11
+JFETCJ=1e-12
+MOSCJ=1e-12
+AutoConverge
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+
+**** 05/25/23 08:25:10 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-montecarlo"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\montecarlo.sim ] 
+
+
+ ****     SORTED DEVIATIONS OF V(OUT)      TEMPERATURE =   27.000 DEG C
+
+                      MONTE CARLO SUMMARY
+
+******************************************************************************
+
+
+
+
+
+Mean Deviation =    -.0667
+Sigma          =     .3297
+
+ RUN                    MAX DEVIATION FROM NOMINAL
+
+Pass   95                .7992  (2.42 sigma)  higher  at T =    3.5278E-03
+                        ( 116.22% of Nominal)
+
+Pass   13                .6808  (2.07 sigma)  lower  at T =    5.2950E-03
+                        (  89.405% of Nominal)
+
+Pass   10                .6637  (2.01 sigma)  lower  at T =    5.3165E-03
+                        (  89.672% of Nominal)
+
+Pass   21                .6487  (1.97 sigma)  higher  at T =    2.8155E-03
+                        ( 117.5 % of Nominal)
+
+Pass   38                .6267  (1.90 sigma)  lower  at T =    5.1972E-03
+                        (  90.247% of Nominal)
+
+Pass   35                .6131  (1.86 sigma)  lower  at T =    5.1392E-03
+                        (  90.459% of Nominal)
+
+Pass   55                .5659  (1.72 sigma)  lower  at T =    5.2452E-03
+                        (  91.193% of Nominal)
+
+Pass   79                .5513  (1.67 sigma)  lower  at T =    5.0487E-03
+                        (  91.421% of Nominal)
+
+Pass    4                .5213  (1.58 sigma)  lower  at T =    5.1808E-03
+                        (  91.888% of Nominal)
+
+Pass    6                .516   (1.56 sigma)  lower  at T =    5.3017E-03
+                        (  91.97 % of Nominal)
+
+Pass   82                .5069  (1.54 sigma)  higher  at T =    3.5794E-03
+                        ( 110.28% of Nominal)
+
+Pass   24                .5025  (1.52 sigma)  lower  at T =    5.2567E-03
+                        (  92.18 % of Nominal)
+
+Pass   26                .4919  (1.49 sigma)  lower  at T =    5.2028E-03
+                        (  92.345% of Nominal)
+
+Pass   14                .4818  (1.46 sigma)  lower  at T =    5.2313E-03
+                        (  92.503% of Nominal)
+
+Pass   18                .48    (1.46 sigma)  higher  at T =    3.6894E-03
+                        ( 109.74% of Nominal)
+
+Pass   49                .4578  (1.39 sigma)  higher  at T =    3.7182E-03
+                        ( 109.29% of Nominal)
+
+Pass   54                .4479  (1.36 sigma)  lower  at T =    5.3069E-03
+                        (  93.03 % of Nominal)
+
+Pass   89                .4433  (1.34 sigma)  higher  at T =    3.7092E-03
+                        ( 108.99% of Nominal)
+
+Pass   58                .4298  (1.30 sigma)  lower  at T =    3.9538E-03
+                        (  91.279% of Nominal)
+
+Pass   88                .4243  (1.29 sigma)  lower  at T =    5.0604E-03
+                        (  93.397% of Nominal)
+
+Pass   98                .4232  (1.28 sigma)  higher  at T =    3.5393E-03
+                        ( 108.59% of Nominal)
+
+Pass   28                .4046  (1.23 sigma)  lower  at T =    5.2782E-03
+                        (  93.703% of Nominal)
+
+Pass   33                .4013  (1.22 sigma)  lower  at T =    5.0755E-03
+                        (  93.755% of Nominal)
+
+Pass    3                .3943  (1.20 sigma)  lower  at T =    5.1034E-03
+                        (  93.864% of Nominal)
+
+Pass    9                .3846  (1.17 sigma)  lower  at T =    5.0122E-03
+                        (  94.014% of Nominal)
+
+Pass   70                .3832  (1.16 sigma)  lower  at T =    5.2692E-03
+                        (  94.037% of Nominal)
+
+Pass   86                .3806  (1.15 sigma)  lower  at T =    5.1128E-03
+                        (  94.078% of Nominal)
+
+Pass   56                .3795  (1.15 sigma)  higher  at T =     .0638
+                        ( 105.44% of Nominal)
+
+Pass   30                .3701  (1.12 sigma)  lower  at T =    3.4740E-03
+                        (  92.491% of Nominal)
+
+Pass   15                .3686  (1.12 sigma)  lower  at T =    5.1458E-03
+                        (  94.264% of Nominal)
+
+Pass   77                .36    (1.09 sigma)  higher  at T =    1.4896E-03
+                        ( 124.35% of Nominal)
+
+Pass    2                .3562  (1.08 sigma)  lower  at T =    5.1280E-03
+                        (  94.457% of Nominal)
+
+Pass   96                .342   (1.04 sigma)  lower  at T =     .6118
+                        (  95.098% of Nominal)
+
+Pass   27                .3373  (1.02 sigma)  higher  at T =    3.8727E-03
+                        ( 106.84% of Nominal)
+
+Pass    8                .3371  (1.02 sigma)  higher  at T =     .013 
+                        ( 104.85% of Nominal)
+
+Pass   53                .3325  (1.01 sigma)  lower  at T =    5.0854E-03
+                        (  94.826% of Nominal)
+
+Pass   50                .3265  ( .99 sigma)  lower  at T =    5.0839E-03
+                        (  94.919% of Nominal)
+
+Pass   47                .3242  ( .98 sigma)  lower  at T =    5.2733E-03
+                        (  94.955% of Nominal)
+
+Pass   16                .3202  ( .97 sigma)  higher  at T =    2.7471E-03
+                        ( 108.64% of Nominal)
+
+Pass   46                .3191  ( .97 sigma)  lower  at T =    3.4733E-03
+                        (  93.527% of Nominal)
+
+Pass   65                .3164  ( .96 sigma)  lower  at T =    5.0280E-03
+                        (  95.076% of Nominal)
+
+Pass   76                .311   ( .94 sigma)  lower  at T =    5.2763E-03
+                        (  95.16 % of Nominal)
+
+Pass   80                .31    ( .94 sigma)  lower  at T =    5.0302E-03
+                        (  95.175% of Nominal)
+
+Pass   51                .3017  ( .92 sigma)  higher  at T =    2.8359E-03
+                        ( 108.14% of Nominal)
+
+Pass   83                .2954  ( .90 sigma)  lower  at T =    5.0183E-03
+                        (  95.403% of Nominal)
+
+Pass   36                .2863  ( .87 sigma)  lower  at T =    3.4675E-03
+                        (  94.191% of Nominal)
+
+Pass   19                .2806  ( .85 sigma)  higher  at T =     .0214
+                        ( 104.03% of Nominal)
+
+Pass  100                .2737  ( .83 sigma)  lower  at T =    1.6660E-03
+                        (  86.616% of Nominal)
+
+Pass   34                .2732  ( .83 sigma)  lower  at T =    5.0894E-03
+                        (  95.749% of Nominal)
+
+Pass   17                .2696  ( .82 sigma)  lower  at T =    5.1647E-03
+                        (  95.804% of Nominal)
+
+Pass   97                .2681  ( .81 sigma)  higher  at T =     .0219
+                        ( 103.85% of Nominal)
+
+Pass   84                .2543  ( .77 sigma)  higher  at T =    3.5662E-03
+                        ( 105.16% of Nominal)
+
+Pass   61                .2531  ( .77 sigma)  lower  at T =    6.0623E-03
+                        (  96.345% of Nominal)
+
+Pass   12                .2513  ( .76 sigma)  higher  at T =    1.4652E-03
+                        ( 117   % of Nominal)
+
+Pass   60                .2415  ( .73 sigma)  lower  at T =    5.1024E-03
+                        (  96.241% of Nominal)
+
+Pass   91                .2415  ( .73 sigma)  higher  at T =     .013 
+                        ( 103.47% of Nominal)
+
+Pass   64                .241   ( .73 sigma)  lower  at T =    5.0638E-03
+                        (  96.249% of Nominal)
+
+Pass   87                .2397  ( .73 sigma)  higher  at T =     .0129
+                        ( 103.45% of Nominal)
+
+Pass   43                .2344  ( .71 sigma)  higher  at T =    1.4764E-03
+                        ( 115.86% of Nominal)
+
+Pass    5                .2342  ( .71 sigma)  lower  at T =    5.2341E-03
+                        (  96.355% of Nominal)
+
+Pass   93                .2321  ( .70 sigma)  higher  at T =     .0214
+                        ( 103.33% of Nominal)
+
+Pass   63                .2184  ( .66 sigma)  lower  at T =    5.0774E-03
+                        (  96.601% of Nominal)
+
+Pass   66                .2118  ( .64 sigma)  lower  at T =    1.6575E-03
+                        (  89.639% of Nominal)
+
+Pass   20                .2046  ( .62 sigma)  higher  at T =    5.4427E-03
+                        ( 102.96% of Nominal)
+
+Pass   25                .2038  ( .62 sigma)  higher  at T =     .0214
+                        ( 102.92% of Nominal)
+
+Pass   42                .1974  ( .60 sigma)  higher  at T =     .013 
+                        ( 102.84% of Nominal)
+
+Pass   78                .1954  ( .59 sigma)  higher  at T =    2.6500E-03
+                        ( 105.27% of Nominal)
+
+Pass   45                .1935  ( .59 sigma)  higher  at T =    1.5049E-03
+                        ( 113.09% of Nominal)
+
+Pass   39                .1856  ( .56 sigma)  higher  at T =    2.8081E-03
+                        ( 105.01% of Nominal)
+
+Pass   44                .1829  ( .55 sigma)  higher  at T =    2.7688E-03
+                        ( 104.94% of Nominal)
+
+Pass   59                .1767  ( .54 sigma)  higher  at T =     .0213
+                        ( 102.54% of Nominal)
+
+Pass   41                .1759  ( .53 sigma)  higher  at T =    1.4742E-03
+                        ( 111.9 % of Nominal)
+
+Pass   85                .1742  ( .53 sigma)  higher  at T =    2.7843E-03
+                        ( 104.7 % of Nominal)
+
+Pass   81                .1728  ( .52 sigma)  lower  at T =    5.2151E-03
+                        (  97.311% of Nominal)
+
+Pass   67                .17    ( .52 sigma)  lower  at T =    5.1071E-03
+                        (  97.354% of Nominal)
+
+Pass   69                .1699  ( .52 sigma)  lower  at T =    5.1071E-03
+                        (  97.355% of Nominal)
+
+Pass   75                .1685  ( .51 sigma)  higher  at T =    5.0073E-03
+                        ( 102.62% of Nominal)
+
+Pass   31                .1667  ( .51 sigma)  lower  at T =    5.2581E-03
+                        (  97.407% of Nominal)
+
+Pass   22                .1631  ( .49 sigma)  higher  at T =    2.7739E-03
+                        ( 104.4 % of Nominal)
+
+Pass   48                .1615  ( .49 sigma)  lower  at T =    5.1429E-03
+                        (  97.487% of Nominal)
+
+Pass   94                .159   ( .48 sigma)  higher  at T =    2.7655E-03
+                        ( 104.29% of Nominal)
+
+Pass   29                .1581  ( .48 sigma)  higher  at T =    2.7694E-03
+                        ( 104.27% of Nominal)
+
+Pass   99                .1575  ( .48 sigma)  higher  at T =     .0134
+                        ( 102.26% of Nominal)
+
+Pass   73                .1522  ( .46 sigma)  higher  at T =    5.3142E-03
+                        ( 102.2 % of Nominal)
+
+Pass   74                .152   ( .46 sigma)  lower  at T =    5.1491E-03
+                        (  97.634% of Nominal)
+
+Pass   72                .152   ( .46 sigma)  higher  at T =     .0129
+                        ( 102.18% of Nominal)
+
+Pass   71                .1461  ( .44 sigma)  lower  at T =    5.1800E-03
+                        (  97.726% of Nominal)
+
+Pass   40                .1399  ( .42 sigma)  higher  at T =    1.5131E-03
+                        ( 109.46% of Nominal)
+
+Pass   92                .1292  ( .39 sigma)  higher  at T =    1.5239E-03
+                        ( 108.74% of Nominal)
+
+Pass   57                .1291  ( .39 sigma)  higher  at T =     .0129
+                        ( 101.86% of Nominal)
+
+Pass   23                .1271  ( .39 sigma)  lower  at T =    4.9612E-03
+                        (  98.022% of Nominal)
+
+Pass   62                .1218  ( .37 sigma)  higher  at T =    1.5312E-03
+                        ( 108.24% of Nominal)
+
+Pass   32                .1153  ( .35 sigma)  lower  at T =    5.0895E-03
+                        (  98.206% of Nominal)
+
+Pass   11                .1097  ( .33 sigma)  lower  at T =    5.1690E-03
+                        (  98.293% of Nominal)
+
+Pass    7                .1095  ( .33 sigma)  higher  at T =     .0127
+                        ( 101.57% of Nominal)
+
+Pass   68                .1006  ( .31 sigma)  lower  at T =    5.1345E-03
+                        (  98.434% of Nominal)
+
+Pass   52                .0943  ( .29 sigma)  lower  at T =    3.8747E-03
+                        (  98.086% of Nominal)
+
+Pass   90                .0842  ( .26 sigma)  lower  at T =     .0212
+                        (  98.792% of Nominal)
+
+Pass   37                .0753  ( .23 sigma)  higher  at T =     .0213
+                        ( 101.08% of Nominal)
+
+
+
+          JOB CONCLUDED
+
+**** 05/25/23 08:25:10 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-montecarlo"  [ d:\utcn\teme\an ii\cad\project\bun-pspicefiles\schematic1\montecarlo.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =       16.22
+

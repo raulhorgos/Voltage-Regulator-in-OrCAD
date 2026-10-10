@@ -1,0 +1,36 @@
+* source BUN
+V_Vin         N155530 0  
++SIN 0 155 60Hz 0 0 0
+C_C         N155638 0 C_C 10m IC=0 
+.model        C_C CAP C=1 DEV=20%
+R_Rl         0 OUT  {r}  
+D_D3         0 N156469 D1N4002 
+R_R1         0 N156010 R_R1 5k  
+.model        R_R1 RES R=1 DEV=5%
+R_R2         N155848 N155638 R_R2 1k  
+.model        R_R2 RES R=1 DEV=5%
+Q_Q2         N155638 N157157 N158247 Q2N3055
+D_D2         N156469 N155638 D1N4002 
+X_POT    N156010 N155848 N155974 SCHEMATIC1_POT 
+D_D1         N156465 N155638 D1N4002 
+R_Rp         N156184 OUT R_Rp 0.25  
+.model        R_Rp RES R=1 DEV=5%
+Q_Qp         N157157 N156184 OUT Q2N2222
+R_R3         N155530 N155540  1m  
+D_D4         0 N156465 D1N4002 
+X_TX    N155540 0 N156465 N156469 SCHEMATIC1_TX 
+X_D9         0 N155848 Zener PARAMS: VZT=14 TCBV=1.7 
+X_U2A         N155974 OUT N155638 0 N157157 TL082
+Q_Q3         N155638 N158247 N156184 Q2N3055
+.PARAM  r=0.1 set=0
+
+.subckt SCHEMATIC1_POT 1 2 t  
+RT_POT         1 t {(5k*(1-{set}))+.001}
+RB_POT         t 2 {(5k*{set})+.001}
+.ends SCHEMATIC1_POT
+
+.subckt SCHEMATIC1_TX 1 2 3 4  
+K_TX         L1_TX L2_TX 1
+L1_TX         1 2 10mH
+L2_TX         3 4 134uH
+.ends SCHEMATIC1_TX
